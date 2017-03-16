@@ -15,6 +15,20 @@ public class Pelota extends Actor
     {
         incx=10;
         incy=10;
+        int dx,dy;
+        dx=Greenfoot.getRandomNumber(10);//random para cambio de dirección x
+        if(dx<=5)
+            dx=1;
+        else 
+            dx=-1;
+        dy=Greenfoot.getRandomNumber(10);//random para cambio de dirección y
+        if(dy<=5)
+            dy=1;
+        else 
+            dy=-1;
+            
+        incx*=dx;
+        incy*=dy;
     }
     /**
      * Act - do whatever the Pelota wants to do. This method is called whenever
@@ -46,9 +60,6 @@ public class Pelota extends Actor
         {
             incx=-incx;
         }
-        
-        
-        
         this.setLocation(nuevox,nuevoy);
     }    
     
