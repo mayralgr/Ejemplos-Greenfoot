@@ -72,14 +72,7 @@ public class Ball  extends Actor
         }
         if(this.isTouching(Paddle.class))
         {
-            if(this.getX()<350)
-            {
-                incy=-incy;
-            }
-            else if((this.getX()>350))
-            {
-                incy=-incy;
-            }
+            incy=-incy;
         }
        this.setLocation(nuevox,nuevoy);
        
