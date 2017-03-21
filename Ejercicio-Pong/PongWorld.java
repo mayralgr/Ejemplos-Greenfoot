@@ -17,6 +17,4 @@ public class PongWorld extends World
         addObject(new Ball(), 350, 250);        
         
     }
-    
-   
 }

@@ -8,13 +8,11 @@ import java.util.List;
  */
 public class Paddle extends Actor
 {
-    
     private long time;
     private boolean balloon;
     
     public Paddle()
     {
-
         time=System.currentTimeMillis();
         balloon=true;
     }
@@ -37,7 +35,6 @@ public class Paddle extends Actor
         {
             this.setLocation(this.getX()+10, this.getY());
         }
-        int e;
         long t=System.currentTimeMillis();
         World mundo=this.getWorld();
         List lista = mundo.getObjects(Balloon.class);
@@ -57,6 +54,5 @@ public class Paddle extends Actor
             mundo.addObject(new Balloon(),px,py);
             balloon=true;
         }
-        
     }    
 }

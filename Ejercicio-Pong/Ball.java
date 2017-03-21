@@ -74,17 +74,8 @@ public class Ball  extends Actor
         }
         if(this.isTouching(Paddle.class))
         {
-            if(this.getY()<350)
-            {
-                incy=-incy;
-                nuevoy=this.getY()+1+incy;
-            }
-            else if(this.getY()>350)
-            {
-                incy=-incy;
-                nuevoy=this.getY()-1+incy;
-            }
-            
+            incy=-incy;
+            nuevoy=this.getY()+incy;   
         }
         
         if(nuevox==mundo.getWidth()/2 && nuevoy==mundo.getHeight()/2)
@@ -96,12 +87,8 @@ public class Ball  extends Actor
         {
             this.setLocation(nuevox,nuevoy);
         }
-       String str = jugador1 +"";
-       mundo.showText("Jugador 1", 60, 10);
-       mundo.showText(str, 150, 10);
-       mundo.showText("Jugador 2", 60, mundo.getHeight()-15);
-       str = jugador2 + "";
-       mundo.showText(str, 150, mundo.getHeight()-15);
+       mundo.showText("Jugador 1: "+jugador1, 60, 10);
+       mundo.showText("Jugador 2: "+jugador2, 60, mundo.getHeight()-15);
        if(jugador1==5||jugador2==5)
        {
            mundo.showText("Game Over",mundo.getWidth()/2, mundo.getHeight()/2);
