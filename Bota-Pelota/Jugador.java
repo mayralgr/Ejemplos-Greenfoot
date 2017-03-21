@@ -35,14 +35,6 @@ public class Jugador extends Actor
         {
             this.setLocation(this.getX()-1,this.getY());
         }
-        /*if(Greenfoot.isKeyDown("up"))
-        {
-            this.setLocation(this.getX(),this.getY()-1);
-        }
-        if(Greenfoot.isKeyDown("down"))
-        {
-            this.setLocation(this.getX(),this.getY()+1);
-        }*/
         if(Greenfoot.isKeyDown("space")&&!disparando)
         {
             World mundo = this.getWorld();

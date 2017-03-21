@@ -17,8 +17,8 @@ public class Ball  extends Actor
     private int speed;
     public Ball()
     {
-        incx=10;
-        incy=10;
+        incx=5;
+        incy=5;
         int dx,dy;
         dx=Greenfoot.getRandomNumber(10);//random para cambio de dirección x
         if(dx<=5)
@@ -35,14 +35,18 @@ public class Ball  extends Actor
         incy*=dy;
         jugador1=0;
         jugador2=0;
-        speed=38;
-        Greenfoot.setSpeed(speed);
+        Greenfoot.delay(10);
     }
      @Override
      public void act() 
      {
         int posx=this.getX();
         int posy = this.getY();// Add your action code here.
+        if(jugador1==2||jugador2==2)
+        {
+           incx=10;
+           incy=10;
+        }
         int nuevox=posx+incx;
         int nuevoy=posy+incy;
         
@@ -57,14 +61,12 @@ public class Ball  extends Actor
             jugador1++;
             nuevox=mundo.getWidth()/2;
             nuevoy=mundo.getHeight()/2;
-            Greenfoot.delay(10);
         }
         if(nuevoy<0)
         {
             jugador2++;
             nuevox=mundo.getWidth()/2;
             nuevoy=mundo.getHeight()/2;
-            Greenfoot.delay(10);
         }
          if(nuevox<0)
         {
@@ -72,19 +74,27 @@ public class Ball  extends Actor
         }
         if(this.isTouching(Paddle.class))
         {
-            incy=-incy;
-        }
-       this.setLocation(nuevox,nuevoy);
-       
-       if(jugador1>2||jugador2>2)
-       {
-           if(speed<55)
-           {
-               int t=Greenfoot.getRandomNumber(5);
-               speed+=t;
-               Greenfoot.setSpeed(speed);
+            if(this.getY()<350)
+            {
+                incy=-incy;
+                nuevoy=this.getY()+1+incy;
             }
-           
+            else if(this.getY()>350)
+            {
+                incy=-incy;
+                nuevoy=this.getY()-1+incy;
+            }
+            
+        }
+        
+        if(nuevox==mundo.getWidth()/2 && nuevoy==mundo.getHeight()/2)
+        {
+            this.setLocation(nuevox,nuevoy);
+            Greenfoot.delay(10);
+        }
+        else
+        {
+            this.setLocation(nuevox,nuevoy);
         }
        String str = jugador1 +"";
        mundo.showText("Jugador 1", 60, 10);
@@ -105,5 +115,8 @@ public class Ball  extends Actor
             }
            Greenfoot.stop();
         }
+
     }
+    
+
 }
